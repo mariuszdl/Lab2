@@ -76,12 +76,12 @@ public class HelloController {
         float pole_calkowite = (float) (2 * 3.14 * r * r + 2 * 3.14 * r * h);
 
         // Pierwsza wartość to waga m^2 blachy o grubosci 1mm (Waga w kg)
-        float waga_blachy = 7.85F * pole_calkowite * g;
-        float waga_blachy_nierdz = 8F * pole_calkowite * g;
+        float waga_blachy = roundResult(7.85F * pole_calkowite * g);
+        float waga_blachy_nierdz = roundResult(8F * pole_calkowite * g);
 
         // Pierwsza wartość to cena za kg
-        float cena_blachy = 2.5F * waga_blachy;
-        float cena_blachy_nierdz = 3F * waga_blachy_nierdz;
+        float cena_blachy = roundResult(2.5F * waga_blachy);
+        float cena_blachy_nierdz = roundResult(3F * waga_blachy_nierdz);
 
 
         blachStalWaga.setText(waga_blachy + " kg");
@@ -89,5 +89,9 @@ public class HelloController {
 
         blachNierdzWaga.setText(waga_blachy_nierdz + " kg");
         blachNierdzKoszt.setText(cena_blachy_nierdz + " zł");
+    }
+
+    private float roundResult(float v) {
+        return (float) (Math.round(v * 100.0) / 100.0);
     }
 }
